@@ -1,43 +1,33 @@
 // TODO: Rename to router
 import React from 'react-native';
-import ToolbarAndroid from 'ToolbarAndroid';
-let { Navigator, StyleSheet, View, Image } = React;
+let { Navigator, StyleSheet, Image, Text, View } = React;
+import Navigation from './Navigation';
 
 let styles = StyleSheet.create({
-    backgroundImageWrapper: {
-        flex: 1
-    },
-    backgroundImage: {
+    stretched: {
+        alignSelf: 'stretch',
         flex: 1,
-        alignItems: 'center',
+        width: null,
     },
-    toolbar: {
-        backgroundColor: '#2E282A',
-        height: 56,
+    heading: {
+        color: '#FFF',
+        fontSize: 56,
+        textAlign: 'center',
+        marginTop: 100,
     }
 });
-
-class Navigation extends React.Component {
-    render() {
-        return (
-            <ToolbarAndroid
-                title="Disgo"
-                titleColor="#FFF"
-                style={styles.toolbar}
-            />
-        )
-    }
-}
 
 class Router extends React.Component {
     renderScene(route, navigator) {
         let Navbar = route.navbar;
         return (
-            <View style={styles.backgroundImageWrapper}>
+            <View style={styles.stretched}>
                 <Image
                     source={require('../assets/img/background.jpg')}
-                    style={styles.backgroundImage}
-                />
+                    style={styles.stretched}
+                >
+                    <Text style={styles.heading}>Disgo</Text>
+                </Image>
             </View>
         );
     }
