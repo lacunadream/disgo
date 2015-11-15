@@ -42,7 +42,7 @@ class Home extends React.Component {
                 <View style={{position: 'relative', margin: 30}}>
                     <Text style={styles.inputHeading}>Amount</Text>
                     <TextInput
-                        style={{height: 40, borderColor: 'gray', borderWidth: 1}}
+                        style={{height: 40, borderColor: '#FFF', borderWidth: 1, color: '#FFF'}}
                         onChangeText={(text) => console.log(text)}
                         keyboardType='numeric'
                         underlineColorAndroid='#FFF'
@@ -54,7 +54,7 @@ class Home extends React.Component {
                     <View style={{flex: 0.5}}>
                         <Text style={styles.inputHeading}>Expiry Month</Text>
                         <TextInput
-                            style={{height: 40, borderColor: 'gray', borderWidth: 1}}
+                            style={{height: 40, borderColor: '#FFF', borderWidth: 1, color: '#FFF'}}
                             onChangeText={(text) => console.log(text)}
                             keyboardType='numeric'
                             underlineColorAndroid='#FFF'
@@ -63,7 +63,7 @@ class Home extends React.Component {
                     <View style={{flex: 0.5}}>
                         <Text style={styles.inputHeading}>Expiry Year</Text>
                         <TextInput
-                            style={{height: 40, borderColor: 'gray', borderWidth: 1}}
+                            style={{height: 40, borderColor: '#FFF', borderWidth: 1, color: '#FFF'}}
                             onChangeText={(text) => console.log(text)}
                             keyboardType='numeric'
                             underlineColorAndroid='#FFF'
@@ -74,7 +74,7 @@ class Home extends React.Component {
                     <View style={{flex: 0.5}}>
                         <Text style={styles.inputHeading}>Card Number</Text>
                         <TextInput
-                            style={{height: 40, borderColor: 'gray', borderWidth: 1}}
+                            style={{height: 40, borderColor: '#FFF', borderWidth: 1, color: '#FFF'}}
                             onChangeText={(text) => console.log(text)}
                             keyboardType='numeric'
                             underlineColorAndroid='#FFF'
@@ -83,7 +83,7 @@ class Home extends React.Component {
                     <View>
                         <Text style={styles.inputHeading}>Security Code</Text>
                         <TextInput
-                            style={{height: 40, borderColor: 'gray', borderWidth: 1}}
+                            style={{height: 40, borderColor: '#FFF', borderWidth: 1, color: '#FFF'}}
                             onChangeText={(text) => console.log(text)}
                             keyboardType='numeric'
                             underlineColorAndroid='#FFF'
