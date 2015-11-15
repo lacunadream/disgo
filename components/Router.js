@@ -51,7 +51,8 @@ const Router = React.createClass({
                 <Component
                     isLoggedIn={this.state.loggedIn}
                     onLogin={this._onLogin}
-                    navigator={navigator} />
+                    navigator={navigator}
+                    credits={route.credits || 100} />
             </View>
         );
     },

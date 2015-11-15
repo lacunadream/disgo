@@ -6,7 +6,7 @@ let { TouchableNativeFeedback, StyleSheet, Text, View } = React;
 class Control extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { credits: 100 };
+        this.state = { credits: this.props.credits };
     }
 
     _handleDo() {
@@ -26,7 +26,7 @@ class Control extends React.Component {
                 <TouchableNativeFeedback
                     onPress={this._handleDo.bind(this)}
                 >
-                    <View style={{backgroundColor: '#F9ED69', padding: 20}}>
+                    <View style={{backgroundColor: '#83CC61', padding: 20}}>
                         <Text style={{ fontSize: 30, fontWeight: 'bold', textAlign: 'center'}}>Do It!</Text>
                     </View>
                 </TouchableNativeFeedback>

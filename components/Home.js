@@ -20,10 +20,18 @@ var styles = StyleSheet.create({
 });
 
 class Home extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            credits: 0
+        };
+    }
+
     _handleSubmission() {
         this.props.navigator.push({
             component: Control,
-            navbar: Navigation
+            navbar: Navigation,
+            credits: this.state.credits
         });
     }
 
@@ -38,6 +46,8 @@ class Home extends React.Component {
                         onChangeText={(text) => console.log(text)}
                         keyboardType='numeric'
                         underlineColorAndroid='#FFF'
+                        onChangeText={(credits) => this.setState({credits})}
+                        value={this.state.credits}
                     />
                 </View>
                 <View style={{margin: 30, flex: 1, flexDirection: 'row'}}>
