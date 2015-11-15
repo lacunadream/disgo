@@ -1,7 +1,7 @@
 'use strict';
 
 import React from 'react-native';
-let { StyleSheet } = React;
+let { StyleSheet, Text } = React;
 import ToolbarAndroid from 'ToolbarAndroid';
 
 let styles = StyleSheet.create({
@@ -11,14 +11,22 @@ let styles = StyleSheet.create({
     }
 });
 
+let toolbarActions = [
+    { title: 'Logout' },
+    { title: 'Settings' }
+]
+
 class Navigation extends React.Component {
     render() {
         return (
             <ToolbarAndroid
+                actions={toolbarActions}
                 title="Disgo"
                 titleColor="#FFF"
                 style={styles.toolbar}
-            />
+            >
+                <Text>Test</Text>
+            </ToolbarAndroid>
         )
     }
 }

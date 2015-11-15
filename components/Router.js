@@ -1,9 +1,10 @@
 'use strict';
 
 import React from 'react-native';
-let { Navigator, StyleSheet, Image, Text, View, TouchableOpacity } = React;
+let { Navigator, StyleSheet, Image, Text, View } = React;
 import Navigation from './Navigation';
 import FBBtn from './FBBtn';
+import Login from './Login';
 
 let styles = StyleSheet.create({
     stretched: {
@@ -11,42 +12,24 @@ let styles = StyleSheet.create({
         flex: 1,
         width: null,
     },
-    heading: {
-        color: '#FFF',
-        fontSize: 56,
-        fontWeight: 'bold',
-        marginTop: 100,
-        textAlign: 'center',
-    },
     backgroundOverlay: {
         backgroundColor: 'rgba(0, 0, 0, .5)',
         flex: 1,
     }
 });
 
-class Login extends React.Component {
-    render() {
-        return (
-            <View>
-                <Text style={styles.heading}>Do</Text>
-                <FBBtn navigator={this.props.navigator} />
-            </View>
-        );
-    }
-}
-
 class Router extends React.Component {
     renderScene(route, navigator) {
         let Component = route.component;
-        let Navbar = route.navbar;
 
         return (
             <View style={styles.stretched}>
                 <Image
-                    source={{uri: 'https://dl.dropboxusercontent.com/u/43355605/background.jpg'}}
+                    source={{uri: 'http://i.imgur.com/5bzJtG5.jpg'}}
                     style={styles.stretched}
                 >
                     <View style={styles.backgroundOverlay}>
+                        <Navigation />
                         <Component navigator={navigator} />
                     </View>
                 </Image>
@@ -59,7 +42,6 @@ class Router extends React.Component {
             <Navigator
                 initialRoute={{
                     component: Login,
-                    navbar: Navigation
                 }}
                 ref={(navigator) => {
                     this._navigator = navigator;

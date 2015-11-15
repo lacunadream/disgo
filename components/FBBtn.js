@@ -5,6 +5,7 @@ let { StyleSheet, View } = React;
 import RNFB from 'react-native-facebook-login';
 let {FBLoginManager, FBLogin} = RNFB;
 import Home from './Home';
+import Login from './Login';
 
 let styles = StyleSheet.create({
     loginButtonContainer: {
@@ -30,7 +31,7 @@ class FBBtn extends React.Component {
                     }}
                     onLogout={() => {
                         this.props.navigator.push({
-                            component: false
+                            component: Login,
                         });
                     }}
                     onCancel={function(e){console.log(e)}}
