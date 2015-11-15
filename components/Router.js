@@ -1,6 +1,6 @@
 // TODO: Rename to router
 import React from 'react-native';
-let { Navigator, StyleSheet, Image, Text, View } = React;
+let { Navigator, StyleSheet, Image, Text, View, TouchableOpacity } = React;
 import Navigation from './Navigation';
 
 let styles = StyleSheet.create({
@@ -12,8 +12,18 @@ let styles = StyleSheet.create({
     heading: {
         color: '#FFF',
         fontSize: 56,
-        textAlign: 'center',
         marginTop: 100,
+        textAlign: 'center',
+    },
+    loginButtonContainer: {
+        backgroundColor: '#3b5998',
+        padding: 20,
+        margin: 50,
+    },
+    loginButton: {
+        color: '#FFF',
+        fontSize: 16,
+        textAlign: 'center',
     }
 });
 
@@ -26,7 +36,10 @@ class Router extends React.Component {
                     source={require('../assets/img/background.jpg')}
                     style={styles.stretched}
                 >
-                    <Text style={styles.heading}>Disgo</Text>
+                    <Text style={styles.heading}>Do</Text>
+                    <View style={styles.loginButtonContainer}>
+                        <Text style={styles.loginButton}>Login with Facebook</Text>
+                    </View>
                 </Image>
             </View>
         );

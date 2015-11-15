@@ -1,4 +1,4 @@
-package com.disgo;
+package com.Do;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -30,7 +30,7 @@ public class MainActivity extends Activity implements DefaultHardwareBackBtnHand
                 .setInitialLifecycleState(LifecycleState.RESUMED)
                 .build();
 
-        mReactRootView.startReactApplication(mReactInstanceManager, "disgo", null);
+        mReactRootView.startReactApplication(mReactInstanceManager, "Do", null);
 
         setContentView(mReactRootView);
     }

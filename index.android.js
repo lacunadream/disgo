@@ -5,7 +5,7 @@ let { AppRegistry } = React;
 
 import Router from './components/Router.js';
 
-class disgo extends React.Component {
+class Do extends React.Component {
   render() {
     return (
       <Router />
@@ -13,4 +13,4 @@ class disgo extends React.Component {
   }
 }
 
-AppRegistry.registerComponent('disgo', () => disgo);
+AppRegistry.registerComponent('Do', () => Do);
