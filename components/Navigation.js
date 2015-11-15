@@ -1,3 +1,5 @@
+'use strict';
+
 import React from 'react-native';
 let { StyleSheet } = React;
 import ToolbarAndroid from 'ToolbarAndroid';

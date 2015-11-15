@@ -1,8 +1,10 @@
-// TODO: Rename to router
+'use strict';
+
 import React from 'react-native';
 let { Navigator, StyleSheet, Image, Text, View, TouchableOpacity } = React;
 import Navigation from './Navigation';
-var {FBLoginManager, FBLogin} = require('react-native-facebook-login');
+import RNFB from 'react-native-facebook-login';
+let {FBLoginManager, FBLogin} = RNFB;
 
 let styles = StyleSheet.create({
     stretched: {
