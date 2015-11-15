@@ -19,7 +19,8 @@ class Login extends React.Component {
         return (
             <View>
                 <Text style={styles.heading}>Do</Text>
-                <FBBtn navigator={this.props.navigator} />
+                <FBBtn
+                    navigator={this.props.navigator} />
             </View>
         );
     }

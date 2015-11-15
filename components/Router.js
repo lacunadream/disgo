@@ -3,8 +3,11 @@
 import React from 'react-native';
 let { Navigator, StyleSheet, Image, Text, View } = React;
 import Navigation from './Navigation';
-import FBBtn from './FBBtn';
+import Home from './Home';
 import Login from './Login';
+
+import Fluxxor, { StoreWatchMixin } from "fluxxor";
+const FluxMixin = Fluxxor.FluxMixin(React);
 
 let styles = StyleSheet.create({
     stretched: {
@@ -18,9 +21,25 @@ let styles = StyleSheet.create({
     }
 });
 
-class Router extends React.Component {
+
+
+const Router = React.createClass({
+    mixins: [FluxMixin, StoreWatchMixin("user")],
+
+    getStateFromFlux() {
+        const flux = this.getFlux();
+        return {
+            user: flux.store("user").getState()
+        };
+    },
+
     renderScene(route, navigator) {
-        let Component = route.component;
+        var Component = Login;
+
+        console.log(this.state);
+        if (this.state.user.loggedIn) {
+            initialComponent = route.component;
+        }
 
         return (
             <View style={styles.stretched}>
@@ -29,13 +48,13 @@ class Router extends React.Component {
                     style={styles.stretched}
                 >
                     <View style={styles.backgroundOverlay}>
-                        <Navigation />
+                        <Navigation navigator={navigator} />
                         <Component navigator={navigator} />
                     </View>
                 </Image>
             </View>
         );
-    }
+    },
 
     render() {
         return (
@@ -46,10 +65,10 @@ class Router extends React.Component {
                 ref={(navigator) => {
                     this._navigator = navigator;
                 }}
-                renderScene={this.renderScene}
+                renderScene={this.renderScene.bind(this)}
             />
         );
     }
-}
+});
 
 export default Router;

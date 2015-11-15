@@ -7,6 +7,9 @@ let {FBLoginManager, FBLogin} = RNFB;
 import Home from './Home';
 import Login from './Login';
 
+import Fluxxor from "fluxxor";
+const FluxMixin = Fluxxor.FluxMixin(React);
+
 let styles = StyleSheet.create({
     loginButtonContainer: {
         backgroundColor: '#3b5998',
@@ -19,18 +22,21 @@ let styles = StyleSheet.create({
     }
 });
 
-class FBBtn extends React.Component {
+const FBBtn = React.createClass({
+    mixins: [FluxMixin],
     render() {
         return (
             <View style={styles.loginButtonContainer}>
                 <FBLogin
                     onLogin={() => {
+                        this.getFlux().actions.user.updateLogin(true);
                         this.props.navigator.push({
                             component: Home
                         });
                     }}
                     onLogout={() => {
-                        this.props.navigator.push({
+                        this.getFlux().actions.user.updateLogin(false);
+                        this.props.navigator.pop({
                             component: Login,
                         });
                     }}
@@ -40,6 +46,6 @@ class FBBtn extends React.Component {
             </View>
         );
     }
-}
+});
 
 export default FBBtn;

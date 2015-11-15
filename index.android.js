@@ -3,14 +3,27 @@
 import React from 'react-native';
 let { AppRegistry } = React;
 
-import Router from './components/Router.js';
+import Router from './components/Router';
 
-class Do extends React.Component {
-  render() {
-    return (
-      <Router />
-    );
-  }
-}
+import Fluxxor from "fluxxor";
+import Stores from "./stores/Stores";
+import Actions from "./actions/Actions";
+const flux = new Fluxxor.Flux(Stores, Actions);
+
+var Do = React.createClass({
+    childContextTypes: {
+        flux: React.PropTypes.object,
+    },
+    getChildContext() {
+        return {
+            flux: flux,
+        };
+    },
+    render() {
+        return (
+            <Router />
+        );
+    }
+});
 
 AppRegistry.registerComponent('Do', () => Do);

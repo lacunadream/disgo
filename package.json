@@ -7,6 +7,7 @@
   },
   "dependencies": {
     "alt": "^0.17.9",
+    "fluxxor": "^1.7.3",
     "react-native": "^0.14.2",
     "react-native-facebook-login": "git://github.com/lwhiteley/react-native-facebook-login.git"
   }
