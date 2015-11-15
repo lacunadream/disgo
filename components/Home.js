@@ -1,7 +1,9 @@
 'use strict';
 
 import React from 'react-native';
-let { View, Text, StyleSheet, TextInput, ScrollView } = React;
+let { TouchableNativeFeedback, View, Text, StyleSheet, TextInput, ScrollView } = React;
+import Navigation from './Navigation';
+import Control from './Control';
 
 var styles = StyleSheet.create({
     heading: {
@@ -18,6 +20,13 @@ var styles = StyleSheet.create({
 });
 
 class Home extends React.Component {
+    _handleSubmission() {
+        this.props.navigator.push({
+            component: Control,
+            navbar: Navigation
+        });
+    }
+
     render() {
         return (
             <ScrollView style={{height: 500}}>
@@ -72,9 +81,13 @@ class Home extends React.Component {
                     </View>
                 </View>
                 <View style={{position: 'relative', margin: 30}}>
-                    <View style={{backgroundColor: '#EB586F', padding: 20}}>
-                        <Text style={{color: '#FFF', fontWeight: 'bold', textAlign: 'center'}}>Do It!</Text>
-                    </View>
+                    <TouchableNativeFeedback
+                        onPress={this._handleSubmission.bind(this)}
+                    >
+                        <View style={{backgroundColor: '#EB586F', padding: 20}}>
+                            <Text style={{color: '#FFF', fontWeight: 'bold', textAlign: 'center'}}>Do It!</Text>
+                        </View>
+                    </TouchableNativeFeedback>
                 </View>
             </ScrollView>
         );
