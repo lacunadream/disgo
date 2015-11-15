@@ -2,6 +2,7 @@
 import React from 'react-native';
 let { Navigator, StyleSheet, Image, Text, View, TouchableOpacity } = React;
 import Navigation from './Navigation';
+var {FBLoginManager, FBLogin} = require('react-native-facebook-login');
 
 let styles = StyleSheet.create({
     stretched: {
@@ -17,7 +18,6 @@ let styles = StyleSheet.create({
     },
     loginButtonContainer: {
         backgroundColor: '#3b5998',
-        padding: 20,
         margin: 50,
     },
     loginButton: {
@@ -33,12 +33,17 @@ class Router extends React.Component {
         return (
             <View style={styles.stretched}>
                 <Image
-                    source={require('../assets/img/background.jpg')}
+                    source={{uri: 'https://dl.dropboxusercontent.com/u/43355605/background.jpg'}}
                     style={styles.stretched}
                 >
                     <Text style={styles.heading}>Do</Text>
                     <View style={styles.loginButtonContainer}>
-                        <Text style={styles.loginButton}>Login with Facebook</Text>
+                        <FBLogin
+                            onLogin={function(e){console.log(e)}}
+                            onLogout={function(e){console.log(e)}}
+                            onCancel={function(e){console.log(e)}}
+                            onPermissionsMissing={function(e){console.log(e)}}
+                        />
                     </View>
                 </Image>
             </View>
