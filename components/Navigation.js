@@ -5,6 +5,7 @@ let { StyleSheet, Text } = React;
 import ToolbarAndroid from 'ToolbarAndroid';
 import {FBLoginManager} from 'NativeModules';
 import Login from './Login';
+import Home from './Home';
 
 let styles = StyleSheet.create({
     toolbar: {
@@ -15,6 +16,7 @@ let styles = StyleSheet.create({
 
 let toolbarActions = [
     { title: 'Logout' },
+    { title: 'Credits' },
     { title: 'Settings' }
 ]
 
@@ -25,6 +27,11 @@ class Navigation extends React.Component {
                 this.props.navigator.push({
                     component: Login,
                 });
+            });
+        } else if (position === 1) {
+            this.props.navigator.push({
+                component: Home,
+                navbar: Navigation,
             });
         }
     }
