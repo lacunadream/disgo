@@ -1,7 +1,7 @@
 'use strict';
 
 import React from 'react-native';
-let { View, Text, StyleSheet, TextInput } = React;
+let { View, Text, StyleSheet, TextInput, ScrollView } = React;
 
 var styles = StyleSheet.create({
     heading: {
@@ -20,7 +20,7 @@ var styles = StyleSheet.create({
 class Home extends React.Component {
     render() {
         return (
-            <View>
+            <ScrollView style={{height: 500}}>
                 <Text style={styles.heading}>Buy Do Credits</Text>
                 <View style={{position: 'relative', margin: 30}}>
                     <Text style={styles.inputHeading}>Amount</Text>
@@ -71,7 +71,12 @@ class Home extends React.Component {
                         />
                     </View>
                 </View>
-            </View>
+                <View style={{position: 'relative', margin: 30}}>
+                    <View style={{backgroundColor: '#EB586F', padding: 20}}>
+                        <Text style={{color: '#FFF', fontWeight: 'bold', textAlign: 'center'}}>Do It!</Text>
+                    </View>
+                </View>
+            </ScrollView>
         );
     }
 }
