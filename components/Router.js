@@ -3,8 +3,7 @@
 import React from 'react-native';
 let { Navigator, StyleSheet, Image, Text, View, TouchableOpacity } = React;
 import Navigation from './Navigation';
-import RNFB from 'react-native-facebook-login';
-let {FBLoginManager, FBLogin} = RNFB;
+import FBBtn from './FBBtn';
 
 let styles = StyleSheet.create({
     stretched: {
@@ -18,20 +17,22 @@ let styles = StyleSheet.create({
         marginTop: 100,
         textAlign: 'center',
     },
-    loginButtonContainer: {
-        backgroundColor: '#3b5998',
-        margin: 50,
-    },
-    loginButton: {
-        color: '#FFF',
-        fontSize: 16,
-        textAlign: 'center',
-    }
 });
 
 class Router extends React.Component {
     renderScene(route, navigator) {
+        let Component = route.component;
         let Navbar = route.navbar;
+
+        if (Component) {
+            return (
+                <View>
+                    <Component />
+                    <FBBtn navigator={navigator} />
+                </View>
+            );
+        }
+
         return (
             <View style={styles.stretched}>
                 <Image
@@ -39,14 +40,7 @@ class Router extends React.Component {
                     style={styles.stretched}
                 >
                     <Text style={styles.heading}>Do</Text>
-                    <View style={styles.loginButtonContainer}>
-                        <FBLogin
-                            onLogin={function(e){console.log(e)}}
-                            onLogout={function(e){console.log(e)}}
-                            onCancel={function(e){console.log(e)}}
-                            onPermissionsMissing={function(e){console.log(e)}}
-                        />
-                    </View>
+                    <FBBtn navigator={navigator} />
                 </Image>
             </View>
         );
@@ -57,6 +51,9 @@ class Router extends React.Component {
             <Navigator
                 initialRoute={{
                     navbar: Navigation
+                }}
+                ref={(navigator) => {
+                    this._navigator = navigator;
                 }}
                 renderScene={this.renderScene}
             />
