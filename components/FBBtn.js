@@ -3,7 +3,7 @@
 import React from 'react-native';
 let { StyleSheet, View } = React;
 import RNFB from 'react-native-facebook-login';
-let {FBLoginManager, FBLogin} = RNFB;
+var FBLogin = RNFB;
 import Home from './Home';
 import Login from './Login';
 import Navigation from './Navigation';

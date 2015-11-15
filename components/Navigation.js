@@ -17,7 +17,11 @@ let styles = StyleSheet.create({
 let toolbarActions = [
     { title: 'Logout' },
     { title: 'Credits' },
-    { title: 'Settings' }
+    { title: 'Settings' }, 
+    { title: 'Notifications'},
+    { title: 'Purchase New Credits'},
+    { title: 'Friends'},
+    { title: 'Charities'}
 ]
 
 class Navigation extends React.Component {
