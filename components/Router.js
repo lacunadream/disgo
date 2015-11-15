@@ -14,24 +14,31 @@ let styles = StyleSheet.create({
     heading: {
         color: '#FFF',
         fontSize: 56,
+        fontWeight: 'bold',
         marginTop: 100,
         textAlign: 'center',
     },
+    backgroundOverlay: {
+        backgroundColor: 'rgba(0, 0, 0, .5)',
+        flex: 1,
+    }
 });
+
+class Login extends React.Component {
+    render() {
+        return (
+            <View>
+                <Text style={styles.heading}>Do</Text>
+                <FBBtn navigator={this.props.navigator} />
+            </View>
+        );
+    }
+}
 
 class Router extends React.Component {
     renderScene(route, navigator) {
         let Component = route.component;
         let Navbar = route.navbar;
-
-        if (Component) {
-            return (
-                <View>
-                    <Component />
-                    <FBBtn navigator={navigator} />
-                </View>
-            );
-        }
 
         return (
             <View style={styles.stretched}>
@@ -39,8 +46,9 @@ class Router extends React.Component {
                     source={{uri: 'https://dl.dropboxusercontent.com/u/43355605/background.jpg'}}
                     style={styles.stretched}
                 >
-                    <Text style={styles.heading}>Do</Text>
-                    <FBBtn navigator={navigator} />
+                    <View style={styles.backgroundOverlay}>
+                        <Component navigator={navigator} />
+                    </View>
                 </Image>
             </View>
         );
@@ -50,6 +58,7 @@ class Router extends React.Component {
         return (
             <Navigator
                 initialRoute={{
+                    component: Login,
                     navbar: Navigation
                 }}
                 ref={(navigator) => {
