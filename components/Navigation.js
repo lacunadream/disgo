@@ -22,7 +22,7 @@ class Navigation extends React.Component {
     _onActionSelected(position) {
         if (position === 0) {
             FBLoginManager.logout((error, data) => {
-                this.props.navigator.pop({
+                this.props.navigator.push({
                     component: Login,
                 });
             });
@@ -30,7 +30,6 @@ class Navigation extends React.Component {
     }
 
     render() {
-        console.log(this.props);
         return (
             <ToolbarAndroid
                 actions={toolbarActions}
@@ -38,9 +37,7 @@ class Navigation extends React.Component {
                 title="Disgo"
                 titleColor="#FFF"
                 style={styles.toolbar}
-            >
-                <Text>Test</Text>
-            </ToolbarAndroid>
+            />
         )
     }
 }

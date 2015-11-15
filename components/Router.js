@@ -2,12 +2,8 @@
 
 import React from 'react-native';
 let { Navigator, StyleSheet, Image, Text, View } = React;
-import Navigation from './Navigation';
 import Home from './Home';
 import Login from './Login';
-
-import Fluxxor, { StoreWatchMixin } from "fluxxor";
-const FluxMixin = Fluxxor.FluxMixin(React);
 
 let styles = StyleSheet.create({
     stretched: {
@@ -21,26 +17,46 @@ let styles = StyleSheet.create({
     }
 });
 
-
-
 const Router = React.createClass({
-    mixins: [FluxMixin, StoreWatchMixin("user")],
-
-    getStateFromFlux() {
-        const flux = this.getFlux();
-        return {
-            user: flux.store("user").getState()
-        };
+    getInitialState: function() {
+        return { loggedIn: false };
     },
-
+    _onLogout: function() {
+        this.setState({
+            loggedIn: false
+        });
+    },
+    _onLogin: function() {
+        console.log("Logged in!");
+        this.setState({
+            loggedIn: true
+        });
+    },
     renderScene(route, navigator) {
-        var Component = Login;
+        let Component = route.component;
+        var Navbar = route.navbar;
+        var _navbar = (
+            <Navbar
+                onLogout={this._onLogout}
+                navigator={navigator} />
+        );
 
-        console.log(this.state);
-        if (this.state.user.loggedIn) {
-            initialComponent = route.component;
+        if (!Navbar) {
+            _navbar = false;
         }
 
+        return (
+            <View>
+                {{ _navbar }}
+                <Component
+                    isLoggedIn={this.state.loggedIn}
+                    onLogin={this._onLogin}
+                    navigator={navigator} />
+            </View>
+        );
+    },
+
+    render() {
         return (
             <View style={styles.stretched}>
                 <Image
@@ -48,25 +64,16 @@ const Router = React.createClass({
                     style={styles.stretched}
                 >
                     <View style={styles.backgroundOverlay}>
-                        <Navigation navigator={navigator} />
-                        <Component navigator={navigator} />
+                        <Navigator
+                            initialRoute={{
+                                component: Login,
+                                navbar: "",
+                            }}
+                            renderScene={this.renderScene}
+                        />
                     </View>
                 </Image>
             </View>
-        );
-    },
-
-    render() {
-        return (
-            <Navigator
-                initialRoute={{
-                    component: Login,
-                }}
-                ref={(navigator) => {
-                    this._navigator = navigator;
-                }}
-                renderScene={this.renderScene.bind(this)}
-            />
         );
     }
 });

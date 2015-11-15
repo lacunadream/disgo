@@ -6,9 +6,7 @@ import RNFB from 'react-native-facebook-login';
 let {FBLoginManager, FBLogin} = RNFB;
 import Home from './Home';
 import Login from './Login';
-
-import Fluxxor from "fluxxor";
-const FluxMixin = Fluxxor.FluxMixin(React);
+import Navigation from './Navigation';
 
 let styles = StyleSheet.create({
     loginButtonContainer: {
@@ -20,23 +18,22 @@ let styles = StyleSheet.create({
         fontSize: 16,
         textAlign: 'center',
     }
-});
+})
 
 const FBBtn = React.createClass({
-    mixins: [FluxMixin],
     render() {
         return (
             <View style={styles.loginButtonContainer}>
                 <FBLogin
                     onLogin={() => {
-                        this.getFlux().actions.user.updateLogin(true);
+                        this.props.onLogin();
                         this.props.navigator.push({
-                            component: Home
+                            component: Home,
+                            navbar: Navigation
                         });
                     }}
                     onLogout={() => {
-                        this.getFlux().actions.user.updateLogin(false);
-                        this.props.navigator.pop({
+                        this.props.navigator.push({
                             component: Login,
                         });
                     }}

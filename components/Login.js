@@ -3,6 +3,8 @@
 import React from 'react-native';
 let { StyleSheet, Text, View } = React;
 import FBBtn from './FBBtn';
+import Home from './Home';
+import Navigation from './Navigation';
 
 let styles = StyleSheet.create({
     heading: {
@@ -20,6 +22,7 @@ class Login extends React.Component {
             <View>
                 <Text style={styles.heading}>Do</Text>
                 <FBBtn
+                    onLogin={this.props.onLogin}
                     navigator={this.props.navigator} />
             </View>
         );
