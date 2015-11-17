@@ -1,4 +1,4 @@
-# disgo
+# DO
 React-native android app - Do!
 
 A simple react-native app written for our entry to Masters of Code London 2015. 
